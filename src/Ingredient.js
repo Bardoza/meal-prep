@@ -3,9 +3,9 @@ import shortid from "shortid";
 import Input from "./Input";
 
 const Ingredient = ({ onAdd }) => {
-  const [name, setName] = useState("Setltexz");
-  const [serving, setServing] = useState("354");
-  const [unit, setUnit] = useState("ml");
+  const [name, setName] = useState("");
+  const [serving, setServing] = useState("");
+  const [unit, setUnit] = useState("");
   const [calories, setCalories] = useState(0);
   const [fat, setFat] = useState(0);
   const [carbs, setCarbs] = useState(0);
