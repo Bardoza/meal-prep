@@ -6,24 +6,21 @@ import { save, load } from "./service";
 
 export default function App() {
   const [ingredients, setIngredients] = useState([]);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    load().then(setIngredients)
+    load().then(setIngredients);
   }, []);
 
-  const handleNewIngredient =  newIngredient => {
-    setError("")
+  const handleNewIngredient = (newIngredient) => {
+    setError("");
     save(newIngredient)
-    .then(() => {
-      setIngredients([...ingredients, newIngredient]);
-    })
-    .catch(e => 
-      setError(e.message)
-    );
+      .then(() => {
+        setIngredients([...ingredients, newIngredient]);
+      })
+      .catch((e) => setError(e.message));
+  };
 
-  }
-  
   return (
     <div className="App">
       <h1>Ingredients</h1>

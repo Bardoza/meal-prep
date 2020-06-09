@@ -11,17 +11,17 @@ const Ingredient = ({ onAdd }) => {
   const [carbs, setCarbs] = useState(0);
   const [protein, setProtein] = useState(0);
 
-  const handleAddIngredient = e => {
+  const handleAddIngredient = (e) => {
     e.preventDefault();
     onAdd({
-      // ingredientId: shortid.generate(),
+      ingredientId: shortid.generate(),
       name,
       serving,
       calories,
       unit,
       fat,
       carbs,
-      protein
+      protein,
     });
   };
 
