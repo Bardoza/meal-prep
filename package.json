@@ -4,9 +4,8 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
-  "proxy":"https://04ttj1tsdc.execute-api.us-east-2.amazonaws.com/prod",
+  "proxy": "https://04ttj1tsdc.execute-api.us-east-2.amazonaws.com/prod",
   "dependencies": {
-    "axios": "0.19.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-scripts": "3.0.1",
