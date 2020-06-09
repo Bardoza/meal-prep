@@ -1,38 +1,9 @@
+import { post, get } from "../src/utils/apiService";
+const url = "/ingredients";
 
-const url ="/ingredients";
-
-
-
-
-export const save = async ingredient => {
-  const options = {
-    method:"post",
-    headers: {
-      'Content-Type':'application/json',
-    },
-    body: JSON.stringify(ingredient)
-  }
-
-
-  const response = await fetch(url,options)
-
-  if(response.ok) {
-    return response.json()
-  }
-
-  const error = await response.json()
-
-  throw new Error(error.body)
- 
-};
+export const save = async (ingredient) => post(url, ingredient);
 
 export const load = async () => {
-
-  const response = await fetch(url)
-
-  if(response.ok) {
-    const body = await response.json()
-    return body.Items
-  }
-
+  const response = await get(url);
+  return response.Items || [];
 };
