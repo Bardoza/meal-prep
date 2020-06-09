@@ -1,18 +1,38 @@
-import axios from "axios";
 
-const url =
-  "https://04ttj1tsdc.execute-api.us-east-2.amazonaws.com/prod/ingredients";
+const url ="/ingredients";
 
-export const save = ingredient => {
-  return axios
-    .post(url, ingredient)
-    .then(response => console.log({ response }) || response.data)
-    .catch(error => console.log(error));
+
+
+
+export const save = async ingredient => {
+  const options = {
+    method:"post",
+    headers: {
+      'Content-Type':'application/json',
+    },
+    body: JSON.stringify(ingredient)
+  }
+
+
+  const response = await fetch(url,options)
+
+  if(response.ok) {
+    return response.json()
+  }
+
+  const error = await response.json()
+
+  throw new Error(error.body)
+ 
 };
 
-export const load = () => {
-  return axios
-    .get(url)
-    .then(response => response.data)
-    .then(data => data.Items);
+export const load = async () => {
+
+  const response = await fetch(url)
+
+  if(response.ok) {
+    const body = await response.json()
+    return body.Items
+  }
+
 };
