@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { load } from "./service";
 
-const IngredientList = ({ ingredients }) => {
+const IngredientList = () => {
+  const [ingredients, setIngredients] = useState([]);
+
+  useEffect(() => {
+    load().then(setIngredients);
+  }, []);
+
   return (
     <table>
       <thead>
@@ -14,7 +21,7 @@ const IngredientList = ({ ingredients }) => {
         </tr>
       </thead>
       <tbody>
-        {ingredients.map(ing => (
+        {ingredients.map((ing) => (
           <tr key={ing.ingredientId}>
             <td>{ing.name}</td>
             <td>

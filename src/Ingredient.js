@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import shortid from "shortid";
 import Input from "./Input";
+import { save } from "./service";
 
-const Ingredient = ({ onAdd }) => {
+const Ingredient = () => {
   const [name, setName] = useState("");
   const [serving, setServing] = useState("");
   const [unit, setUnit] = useState("");
@@ -10,10 +11,11 @@ const Ingredient = ({ onAdd }) => {
   const [fat, setFat] = useState(0);
   const [carbs, setCarbs] = useState(0);
   const [protein, setProtein] = useState(0);
+  const [error, setError] = useState("");
 
   const handleAddIngredient = (e) => {
     e.preventDefault();
-    onAdd({
+    save({
       ingredientId: shortid.generate(),
       name,
       serving,
@@ -22,11 +24,12 @@ const Ingredient = ({ onAdd }) => {
       fat,
       carbs,
       protein,
-    });
+    }).catch((e) => setError(e.message));
   };
 
   return (
     <form onSubmit={handleAddIngredient}>
+      <strong>{error}</strong>
       <Input id="name" label="Name" onChange={setName} value={name} />
       <Input
         id="serving"
