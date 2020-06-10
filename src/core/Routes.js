@@ -8,9 +8,10 @@ const Routes = () => {
     <Switch>
       <Route path="/ingredient">
         <Ingredient />
+        <IngredientList />
       </Route>
       <Route path="/">
-        <IngredientList />
+        <div>Recipies</div>
       </Route>
     </Switch>
   );
