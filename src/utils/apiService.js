@@ -13,7 +13,6 @@ const http = async (url, options = {}) => {
     return response.json();
   }
   const jsonError = await response.json();
-  console.log(jsonError);
   throw new Error(jsonError.body);
 };
 
