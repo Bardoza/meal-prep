@@ -5,7 +5,7 @@ const globalOptions = {
 };
 
 const http = async (url, options = {}) => {
-  const response = await fetch(url, {
+  const response = await fetch(`api/${url}`, {
     ...globalOptions,
     ...options,
   });

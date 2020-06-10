@@ -4,7 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
-  "proxy": "https://04ttj1tsdc.execute-api.us-east-2.amazonaws.com/prod",
+  "proxy": "https://04ttj1tsdc.execute-api.us-east-2.amazonaws.com/dev",
   "dependencies": {
     "react": "16.12.0",
     "react-dom": "16.12.0",
