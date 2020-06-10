@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { load } from "./service";
+import { loadIngredients, deleteIngredient } from "./service";
 
 const IngredientList = () => {
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
-    load().then(setIngredients);
+    loadIngredients().then(setIngredients);
   }, []);
+
+  const handleDeleteItem = (ingredientId) => () => {
+    deleteIngredient(ingredientId)
+      .then((response) => {
+        console.log({ response });
+        setIngredients(
+          ingredients.filter((ing) => ing.ingredientId !== ingredientId)
+        );
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  };
 
   return (
     <table>
@@ -18,6 +31,7 @@ const IngredientList = () => {
           <th>Fat</th>
           <th>Carbs</th>
           <th>Protein</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +45,11 @@ const IngredientList = () => {
             <td>{ing.fat}</td>
             <td>{ing.carbs}</td>
             <td>{ing.protein}</td>
+            <td>
+              <button onClick={handleDeleteItem(ing.ingredientId)}>
+                delete
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>

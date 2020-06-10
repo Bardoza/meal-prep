@@ -25,3 +25,11 @@ export const post = (url, payload) => {
   };
   return http(url, options);
 };
+
+export const deleteRequest = (url, payload) => {
+  const options = {
+    method: "delete",
+    body: JSON.stringify(payload),
+  };
+  return http(url, options);
+};

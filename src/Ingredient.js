@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import shortid from "shortid";
 import Input from "./Input";
-import { save } from "./service";
+import { createIngredient } from "./service";
 
 const Ingredient = () => {
   const [name, setName] = useState("");
@@ -15,7 +15,7 @@ const Ingredient = () => {
 
   const handleAddIngredient = (e) => {
     e.preventDefault();
-    save({
+    createIngredient({
       ingredientId: shortid.generate(),
       name,
       serving,
