@@ -1,5 +1,5 @@
 import { post, get, deleteRequest } from "../src/utils/apiService";
-const url = "/ingredients";
+const url = "ingredients";
 
 export const createIngredient = async (ingredient) => post(url, ingredient);
 
