@@ -6,9 +6,9 @@ const IngredientList = () => {
   const [ingredients, actions] = useIngredients();
 
   useEffect(() => {
-    console.count("Using EFFECT");
     actions.load();
-  }, [actions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <table>
