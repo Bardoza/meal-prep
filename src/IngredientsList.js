@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { loadIngredients, deleteIngredient } from "./service";
+import React, { useEffect } from "react";
+
+import { useIngredients } from "./Ingredients/context";
 
 const IngredientList = () => {
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, actions] = useIngredients();
 
   useEffect(() => {
-    loadIngredients().then(setIngredients);
-  }, []);
-
-  const handleDeleteItem = (ingredientId) => () => {
-    deleteIngredient(ingredientId)
-      .then((response) => {
-        console.log({ response });
-        setIngredients(
-          ingredients.filter((ing) => ing.ingredientId !== ingredientId)
-        );
-      })
-      .catch((e) => {
-        console.log(e.message);
-      });
-  };
+    console.count("Using EFFECT");
+    actions.load();
+  }, [actions]);
 
   return (
     <table>
@@ -46,9 +35,7 @@ const IngredientList = () => {
             <td>{ing.carbs}</td>
             <td>{ing.protein}</td>
             <td>
-              <button onClick={handleDeleteItem(ing.ingredientId)}>
-                delete
-              </button>
+              <button onClick={actions.remove(ing.ingredientId)}>delete</button>
             </td>
           </tr>
         ))}
