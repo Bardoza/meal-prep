@@ -12,7 +12,6 @@ const IngredientsProvider = ({ children }) => {
   const [ingredients, setIngredients] = useState([]);
 
   const load = async () => {
-    console.log("calling load");
     const list = await loadIngredients();
     setIngredients(list);
   };

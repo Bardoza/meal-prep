@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useIngredients } from "./Ingredients/context";
+import { useIngredients } from "./Ingredient.context";
 import ingredientSchema from "./Ingredient.schema";
 
 const initialValues = {
@@ -16,8 +16,16 @@ const initialValues = {
 const Ingredient = () => {
   const [, actions] = useIngredients();
 
-  const handleAddIngredient = (values, act) => {
-    console.log({ values, act });
+  const handleAddIngredient = async (values, { setSubmitting }) => {
+    setSubmitting(true);
+
+    try {
+      await actions.add(values);
+    } catch (e) {
+      console.log("API ERROR", e);
+    }
+
+    setSubmitting(false);
   };
 
   return (

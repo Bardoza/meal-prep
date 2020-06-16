@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { useIngredients } from "./Ingredients/context";
+import { useIngredients } from "./Ingredient.context";
 
 const IngredientList = () => {
   const [ingredients, actions] = useIngredients();

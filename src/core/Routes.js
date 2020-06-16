@@ -1,17 +1,12 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import IngredientsProvider from "../Ingredients/context";
-import IngredientList from "../IngredientsList";
-import Ingredient from "../Ingredient";
+import IngredientPage from "../Ingredient/IngredientPage";
 
 const Routes = () => {
   return (
     <Switch>
       <Route path="/ingredient">
-        <IngredientsProvider>
-          <Ingredient />
-          <IngredientList />
-        </IngredientsProvider>
+        <IngredientPage />
       </Route>
       <Route path="/">
         <div>Recipies</div>
