@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useIngredients } from "./Ingredient.context";
 import ingredientSchema from "./Ingredient.schema";
+import Input from "../core/Input";
 
 const initialValues = {
   name: "",
@@ -36,21 +37,13 @@ const Ingredient = () => {
     >
       {({ isSubmitting }) => (
         <Form>
-          <label htmlFor="name">Name</label>
-          <Field name="name"></Field>
-          <ErrorMessage name="name" component="div" />
-          <Field name="serving"></Field>
-          <ErrorMessage name="serving" component="div" />
-          <Field name="unit"></Field>
-          <ErrorMessage name="unit" component="div" />
-          <Field name="calories"></Field>
-          <ErrorMessage name="calories" component="div" />
-          <Field name="fat"></Field>
-          <ErrorMessage name="fat" component="div" />
-          <Field name="carbs"></Field>
-          <ErrorMessage name="carbs" component="div" />
-          <Field name="protein"></Field>
-          <ErrorMessage name="protein" component="div" />
+          <Input name="name" label="Name:" />
+          <Input name="serving" label="Serving:" />
+          <Input name="unit" label="Unit:" />
+          <Input name="calories" label="Calories:" />
+          <Input name="fat" label="Fat:" />
+          <Input name="carbs" label="Carbs:" />
+          <Input name="protein" label="Protein:" />
           <button type="submit" disabled={isSubmitting}>
             Submit
           </button>
