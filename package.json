@@ -6,11 +6,13 @@
   "main": "src/index.js",
   "proxy": "https://04ttj1tsdc.execute-api.us-east-2.amazonaws.com/dev",
   "dependencies": {
+    "formik": "^2.1.4",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.0.1",
-    "shortid": "2.2.15"
+    "shortid": "2.2.15",
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "typescript": "3.8.3"
